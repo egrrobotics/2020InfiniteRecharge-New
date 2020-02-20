@@ -27,7 +27,7 @@ public class ArcadeDrive extends Command {
   }
 
   public double deadBand(double x){
-    if (Math.abs(x)<.1){
+    if (Math.abs(x)<.2){
       return 0;
     }else{
       return x;
