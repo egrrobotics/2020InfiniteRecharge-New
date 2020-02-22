@@ -14,6 +14,7 @@ import frc.robot.commands.ClimberLift;
 import frc.robot.commands.ClimberWinch;
 import frc.robot.commands.IntakeLift;
 import frc.robot.commands.IntakeSpinner;
+import frc.robot.commands.WofColorTest;
 import frc.robot.commands.WofLift;
 
 /**
@@ -69,6 +70,9 @@ public class OI {
     // Wof lift up/down.
     driverButtonA.whileHeld(new WofLift(0.25));
     driverButtonB.whileHeld(new WofLift(-0.25));
+
+    // Color match testing.
+    driverButtonStart.whileHeld(new WofColorTest());
 
   }
   

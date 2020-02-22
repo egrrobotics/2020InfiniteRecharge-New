@@ -7,11 +7,16 @@
 
 package frc.robot;
 
+import com.revrobotics.ColorMatch;
+import com.revrobotics.ColorSensorV3;
+
+import edu.wpi.first.wpilibj.I2C;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import edu.wpi.first.wpilibj.util.Color;
 import frc.robot.commands.ExampleCommand;
 import frc.robot.subsystems.Climber;
 import frc.robot.subsystems.DriveTrain;
@@ -27,9 +32,21 @@ import frc.robot.subsystems.Wof;
  * project.
  */
 public class Robot extends TimedRobot {
+
+  // Color Sensor
+  public static I2C.Port i2cPort = I2C.Port.kOnboard;
+  public static ColorSensorV3 m_colorSensor = new ColorSensorV3(i2cPort);
+  public static ColorMatch m_colorMatcher = new ColorMatch();
+  public static Color kBlueTarget = ColorMatch.makeColor(0.143, 0.427, 0.429);
+  public static Color kGreenTarget = ColorMatch.makeColor(0.197, 0.561, 0.240);
+  public static Color kRedTarget = ColorMatch.makeColor(0.561, 0.232, 0.114);
+  public static Color kYellowTarget = ColorMatch.makeColor(0.361, 0.524, 0.113);
+
+  // Defaults
   public static ExampleSubsystem m_subsystem = new ExampleSubsystem();
   public static OI m_oi;
 
+  // Other Subsystems
   public static Intake intake = new Intake();
   public static Climber climber = new Climber();
   public static Wof wof = new Wof();
@@ -48,6 +65,12 @@ public class Robot extends TimedRobot {
     m_chooser.setDefaultOption("Default Auto", new ExampleCommand());
     // chooser.addOption("My Auto", new MyAutoCommand());
     SmartDashboard.putData("Auto mode", m_chooser);
+
+    // Color Sensor
+    m_colorMatcher.addColorMatch(kBlueTarget);
+    m_colorMatcher.addColorMatch(kGreenTarget);
+    m_colorMatcher.addColorMatch(kRedTarget);
+    m_colorMatcher.addColorMatch(kYellowTarget); 
   }
 
   /**

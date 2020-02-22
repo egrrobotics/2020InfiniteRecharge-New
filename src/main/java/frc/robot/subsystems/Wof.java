@@ -9,9 +9,13 @@ package frc.robot.subsystems;
 
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
+import com.revrobotics.ColorMatchResult;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
+import frc.robot.Robot;
 import frc.robot.RobotMap;
+
+import frc.robot.util.WofMatchResult;
 
 /**
  * Add your docs here.
@@ -32,6 +36,23 @@ public class Wof extends Subsystem {
 
   public void setSpinnerPower(double power) {
     spinner.set(ControlMode.PercentOutput, power);
+  }
+
+  public WofMatchResult getWheelColor() {
+
+    ColorMatchResult match = Robot.m_colorMatcher.matchClosestColor(Robot.m_colorSensor.getColor());
+
+    String colorString;
+    if (match.color == Robot.kBlueTarget) { colorString = "Blue"; }
+    else if (match.color == Robot.kRedTarget) { colorString = "Red"; }
+    else if (match.color == Robot.kGreenTarget) { colorString = "Green"; }
+    else if (match.color == Robot.kYellowTarget) { colorString = "Yellow"; }
+    else { colorString = "Unknown"; }
+
+    double colorConfidence = match.confidence;
+
+    return new WofMatchResult(colorString, colorConfidence);
+
   }
 
   @Override
