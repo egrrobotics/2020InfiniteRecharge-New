@@ -38,6 +38,14 @@ public class Wof extends Subsystem {
     spinner.set(ControlMode.PercentOutput, power);
   }
 
+  public double getLiftPosition() {
+    return lift.getSelectedSensorPosition();
+  }
+
+  public double getSpinnerPower() {
+    return spinner.getSelectedSensorPosition();
+  }
+
   public WofMatchResult getWheelColor() {
 
     ColorMatchResult match = Robot.m_colorMatcher.matchClosestColor(Robot.m_colorSensor.getColor());
