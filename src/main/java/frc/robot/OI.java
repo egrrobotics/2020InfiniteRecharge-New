@@ -71,9 +71,6 @@ public class OI {
     driverButtonA.whileHeld(new WofLift(0.25));
     driverButtonB.whileHeld(new WofLift(-0.25));
 
-    // Color match testing.
-    driverButtonStart.whileHeld(new WofColorTest());
-
   }
   
 }
