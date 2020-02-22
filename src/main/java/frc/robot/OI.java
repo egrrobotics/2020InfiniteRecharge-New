@@ -14,7 +14,6 @@ import frc.robot.commands.ClimberLift;
 import frc.robot.commands.ClimberWinch;
 import frc.robot.commands.IntakeLift;
 import frc.robot.commands.IntakeSpinner;
-import frc.robot.commands.WofColorTest;
 import frc.robot.commands.WofLift;
 
 /**
