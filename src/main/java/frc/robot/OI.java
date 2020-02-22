@@ -15,6 +15,7 @@ import frc.robot.commands.ClimberWinch;
 import frc.robot.commands.IntakeLift;
 import frc.robot.commands.IntakeSpinner;
 import frc.robot.commands.WofLift;
+import frc.robot.commands.WofSpinner;
 
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -69,6 +70,10 @@ public class OI {
     // Wof lift up/down.
     driverButtonA.whileHeld(new WofLift(0.25));
     driverButtonB.whileHeld(new WofLift(-0.25));
+
+    // Wof spinner.
+    driverButtonX.whileHeld(new WofSpinner(0.25));
+    driverButtonY.whileHeld(new WofSpinner(-0.25));
 
   }
   
