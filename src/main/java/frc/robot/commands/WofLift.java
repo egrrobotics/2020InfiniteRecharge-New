@@ -9,6 +9,7 @@ package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
+import frc.robot.RobotMap;
 
 public class WofLift extends Command {
 
@@ -23,7 +24,13 @@ public class WofLift extends Command {
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
-    Robot.wof.setLiftPower(power);
+    if ((power > 0) && (Robot.wof.getLiftPosition() < RobotMap.wofLiftLimit)) {
+      Robot.wof.setLiftPower(power);
+    } else if ((power < 0) && (Robot.wof.getLiftPosition() > 0)) {
+      Robot.wof.setLiftPower(power);
+    } else {
+      Robot.wof.setLiftPower(0);
+    }
   }
 
   // Called repeatedly when this Command is scheduled to run

@@ -33,6 +33,7 @@ public class RobotMap {
   public static int intakeSpinner = 6;
 
   public static int wofLift = 7;
+  public static double wofLiftLimit = 100;
   public static int wofSpinner = 8;
 
   public static int climberWinch = 9;
