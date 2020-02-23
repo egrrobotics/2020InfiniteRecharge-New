@@ -11,31 +11,47 @@ import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 import frc.robot.RobotMap;
 
-public class WofLift extends Command {
-
-  double power;
-
-  public WofLift(double percentage) {
+public class WofDrive extends Command {
+  public WofDrive() {
     // Use requires() here to declare subsystem dependencies
+    // eg. requires(chassis);
     requires(Robot.wof);
-    power = percentage;
   }
 
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
-    if ((power > 0) && (Robot.wof.getLiftPosition() < RobotMap.wofLiftLimit)) {
-      Robot.wof.setLiftPower(power);
-    } else if ((power < 0) && (Robot.wof.getLiftPosition() > 0)) {
-      Robot.wof.setLiftPower(power);
-    } else {
-      Robot.wof.setLiftPower(0);
-    }
   }
 
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
+    
+    // Init.
+    double liftPower = 0; double spinnerPower = 0;
+    int currentPOV = Robot.m_oi.operator.getPOV();
+
+    // Lift power.
+    if (currentPOV == 315 || currentPOV == 0 || currentPOV == 45) {
+      if (Robot.wof.getLiftPosition() < RobotMap.wofLiftLimit) {
+        liftPower = 0.25;
+      }
+    } else if (currentPOV == 135 || currentPOV == 180 || currentPOV == 225) {
+      if (Robot.wof.getLiftPosition() > 0) {
+        liftPower = -0.25;
+      }
+    }
+
+    // Spinner power.
+    if (currentPOV == 225 || currentPOV == 270 || currentPOV == 315) {
+      spinnerPower = -0.25;
+    } else if (currentPOV == 45 || currentPOV == 90 || currentPOV == 135) {
+      spinnerPower = 0.25;
+    }
+    
+    // Test log.
+    System.out.println("=====\nLIFT: " + liftPower + "\nSPIN: " + spinnerPower);
+
   }
 
   // Make this return true when this Command no longer needs to run execute()
@@ -47,13 +63,11 @@ public class WofLift extends Command {
   // Called once after isFinished returns true
   @Override
   protected void end() {
-    Robot.wof.setLiftPower(0);
   }
 
   // Called when another command which requires one or more of the same
   // subsystems is scheduled to run
   @Override
   protected void interrupted() {
-    Robot.wof.setLiftPower(0);
   }
 }

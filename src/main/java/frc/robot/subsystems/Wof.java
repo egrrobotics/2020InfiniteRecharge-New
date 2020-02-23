@@ -14,7 +14,7 @@ import com.revrobotics.ColorMatchResult;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import frc.robot.Robot;
 import frc.robot.RobotMap;
-
+import frc.robot.commands.WofDrive;
 import frc.robot.util.WofMatchResult;
 
 /**
@@ -67,5 +67,6 @@ public class Wof extends Subsystem {
   public void initDefaultCommand() {
     // Set the default command for a subsystem here.
     // setDefaultCommand(new MySpecialCommand());
+    setDefaultCommand(new WofDrive());
   }
 }
