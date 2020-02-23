@@ -58,7 +58,7 @@ public class OI {
     operatorButtonX.whileHeld(new IntakeLift(-0.3));
 
     // Climber hook lift up/down.
-    operatorButtonRightBumper.whileHeld(new ClimberLift(0.45));
+    operatorButtonRightBumper.whileHeld(new ClimberLift(0.325));
     operatorButtonLeftBumper.whileHeld(new ClimberLift(-0.2));
 
     // Climber winch (only goes in!)

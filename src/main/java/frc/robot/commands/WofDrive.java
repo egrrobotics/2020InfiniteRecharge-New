@@ -34,23 +34,24 @@ public class WofDrive extends Command {
     // Lift power.
     if (currentPOV == 315 || currentPOV == 0 || currentPOV == 45) {
       if (Robot.wof.getLiftPosition() < RobotMap.wofLiftLimit) {
-        liftPower = 0.25;
+        liftPower = -0.25;
       }
     } else if (currentPOV == 135 || currentPOV == 180 || currentPOV == 225) {
       if (Robot.wof.getLiftPosition() > 0) {
-        liftPower = -0.25;
+        liftPower = 0.25;
       }
     }
 
     // Spinner power.
     if (currentPOV == 225 || currentPOV == 270 || currentPOV == 315) {
-      spinnerPower = -0.25;
+      spinnerPower = 0.5;
     } else if (currentPOV == 45 || currentPOV == 90 || currentPOV == 135) {
-      spinnerPower = 0.25;
+      spinnerPower = -0.5;
     }
     
-    // Test log.
-    System.out.println("=====\nLIFT: " + liftPower + "\nSPIN: " + spinnerPower);
+    // Set powers.
+    Robot.wof.setLiftPower(liftPower);
+    Robot.wof.setSpinnerPower(spinnerPower);
 
   }
 

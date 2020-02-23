@@ -30,6 +30,10 @@ public class Climber extends Subsystem {
     lift.set(ControlMode.PercentOutput, power);
   }
 
+  public double getLiftPosition() {
+    return lift.getSelectedSensorPosition();
+  }
+
   public void setWinchPower(double power) {
     winch.set(ControlMode.PercentOutput, power);
   }
