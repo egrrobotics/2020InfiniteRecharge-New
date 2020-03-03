@@ -17,8 +17,7 @@ import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.util.Color;
-import frc.robot.commands.AutoForwardLeft;
-import frc.robot.commands.AutoForwardRight;
+import frc.robot.commands.AutoOnTheLine;
 import frc.robot.subsystems.Climber;
 import frc.robot.subsystems.DriveTrain;
 import frc.robot.subsystems.ExampleSubsystem;
@@ -65,8 +64,7 @@ public class Robot extends TimedRobot {
   @Override
   public void robotInit() {
     m_oi = new OI();
-    m_chooser.setDefaultOption("Forward and Right", new AutoForwardRight());
-    m_chooser.addOption("Forward and Left", new AutoForwardLeft());
+    m_chooser.setDefaultOption("On the Line", new AutoOnTheLine());
     SmartDashboard.putData("Auto mode", m_chooser);
 
     // Color Sensor
