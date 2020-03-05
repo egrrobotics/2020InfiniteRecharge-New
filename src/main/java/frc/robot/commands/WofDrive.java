@@ -34,11 +34,11 @@ public class WofDrive extends Command {
     // Lift power.
     if (currentPOV == 315 || currentPOV == 0 || currentPOV == 45) {
       if (Robot.wof.getLiftPosition() < RobotMap.wofLiftLimit) {
-        liftPower = -0.25;
+        liftPower = -0.5;
       }
     } else if (currentPOV == 135 || currentPOV == 180 || currentPOV == 225) {
       if (Robot.wof.getLiftPosition() > 0) {
-        liftPower = 0.25;
+        liftPower = 0.5;
       }
     }
 

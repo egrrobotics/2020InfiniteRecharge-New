@@ -10,6 +10,8 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
 import frc.robot.commands.DriveTimed;
+import frc.robot.commands.DelayTimed;
+import frc.robot.commands.IntakeSpinTimed;
 
 public class AutoOnTheLine extends CommandGroup {
   /**
@@ -33,7 +35,12 @@ public class AutoOnTheLine extends CommandGroup {
     // a CommandGroup containing them would require both the chassis and the
     // arm.
 
-    addSequential(new DriveTimed(1, 0.5, 0.5));
+    // Drive.
+    addSequential(new DriveTimed(1.1, 0.5, 0.5));
+
+    // Delay & Spit.
+    addSequential(new DelayTimed(0.125));
+    addSequential(new IntakeSpinTimed(1, 1));
     
   }
 }

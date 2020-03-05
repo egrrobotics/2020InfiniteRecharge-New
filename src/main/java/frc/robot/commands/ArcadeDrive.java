@@ -36,8 +36,10 @@ public class ArcadeDrive extends Command {
   
   
   public double clip(double x){
-    if (x>.825) return .825;
-    if (x<-.825) return -.825;
+    if (!Robot.m_oi.driverButtonLeftBumper.get()) {
+      if (x>.825) return .825;
+      if (x<-.825) return -.825;
+    }
     return x;
   }
 
