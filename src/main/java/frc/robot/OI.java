@@ -54,7 +54,7 @@ public class OI {
     operatorButtonB.whileHeld(new IntakeSpinner(1));
 
     // Intake spinner up/down.
-    operatorButtonY.whileHeld(new IntakeLift(0.4));
+    operatorButtonY.whileHeld(new IntakeLift(0.5));
     operatorButtonX.whileHeld(new IntakeLift(-0.4));
 
     // Climber hook lift up/down.

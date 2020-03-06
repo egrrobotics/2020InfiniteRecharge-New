@@ -16,18 +16,12 @@ import frc.robot.RobotMap;
 /**
  * Add your docs here.
  */
-public class Intake extends Subsystem {
+public class IntakeLift extends Subsystem {
 
-  TalonSRX spinner;
   TalonSRX lift;
 
-  public Intake() {
-    spinner = new TalonSRX(RobotMap.intakeSpinner);
+  public IntakeLift() {
     lift = new TalonSRX(RobotMap.intakeLift);
-  }
-
-  public void setSpinnerPower(double power) {
-    spinner.set(ControlMode.PercentOutput, power);
   }
 
   public void setLiftPower(double power) {

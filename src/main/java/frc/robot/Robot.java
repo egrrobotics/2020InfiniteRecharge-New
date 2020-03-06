@@ -18,10 +18,13 @@ import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.util.Color;
 import frc.robot.commands.AutoOnTheLine;
+import frc.robot.commands.Enginauto;
+import frc.robot.commands.TestAuto;
 import frc.robot.subsystems.Climber;
 import frc.robot.subsystems.DriveTrain;
 import frc.robot.subsystems.ExampleSubsystem;
-import frc.robot.subsystems.Intake;
+import frc.robot.subsystems.IntakeLift;
+import frc.robot.subsystems.IntakeSpin;
 import frc.robot.subsystems.Wof;
 
 import frc.robot.util.WofMatchResult;
@@ -49,7 +52,8 @@ public class Robot extends TimedRobot {
   public static OI m_oi;
 
   // Other Subsystems
-  public static Intake intake = new Intake();
+  public static IntakeLift intakeLift = new IntakeLift();
+  public static IntakeSpin intakeSpin = new IntakeSpin();
   public static Climber climber = new Climber();
   public static Wof wof = new Wof();
   public static DriveTrain driveTrain = new DriveTrain();
@@ -65,6 +69,8 @@ public class Robot extends TimedRobot {
   public void robotInit() {
     m_oi = new OI();
     m_chooser.setDefaultOption("On the Line", new AutoOnTheLine());
+    m_chooser.addOption("Enginauto", new Enginauto());
+    m_chooser.addOption("Test", new TestAuto());
     SmartDashboard.putData("Auto mode", m_chooser);
 
     // Color Sensor

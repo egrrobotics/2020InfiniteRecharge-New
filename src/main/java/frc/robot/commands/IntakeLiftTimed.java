@@ -23,7 +23,7 @@ public class IntakeLiftTimed extends TimedCommand {
     super(timeout);
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
-    requires(Robot.intake);
+    requires(Robot.intakeLift);
 
     this.liftPower = power;
   }
@@ -31,7 +31,7 @@ public class IntakeLiftTimed extends TimedCommand {
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
-    Robot.intake.setLiftPower(liftPower);
+    Robot.intakeLift.setLiftPower(liftPower);
   }
 
   // Called repeatedly when this Command is scheduled to run
@@ -42,13 +42,13 @@ public class IntakeLiftTimed extends TimedCommand {
   // Called once after timeout
   @Override
   protected void end() {
-    Robot.intake.setLiftPower(0);
+    Robot.intakeLift.setLiftPower(0);
   }
 
   // Called when another command which requires one or more of the same
   // subsystems is scheduled to run
   @Override
   protected void interrupted() {
-    Robot.intake.setLiftPower(0);
+    Robot.intakeLift.setLiftPower(0);
   }
 }

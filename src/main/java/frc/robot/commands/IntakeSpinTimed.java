@@ -23,7 +23,7 @@ public class IntakeSpinTimed extends TimedCommand {
     super(timeout);
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
-    requires(Robot.intake);
+    requires(Robot.intakeSpin);
 
     this.spinPower = power;
   }
@@ -31,7 +31,7 @@ public class IntakeSpinTimed extends TimedCommand {
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
-    Robot.intake.setSpinnerPower(spinPower);
+    Robot.intakeSpin.setSpinnerPower(spinPower);
   }
 
   // Called repeatedly when this Command is scheduled to run
@@ -42,13 +42,13 @@ public class IntakeSpinTimed extends TimedCommand {
   // Called once after timeout
   @Override
   protected void end() {
-    Robot.intake.setSpinnerPower(0);
+    Robot.intakeSpin.setSpinnerPower(0);
   }
 
   // Called when another command which requires one or more of the same
   // subsystems is scheduled to run
   @Override
   protected void interrupted() {
-    Robot.intake.setSpinnerPower(0);
+    Robot.intakeSpin.setSpinnerPower(0);
   }
 }
