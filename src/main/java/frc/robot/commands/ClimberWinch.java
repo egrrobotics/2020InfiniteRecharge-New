@@ -16,14 +16,14 @@ public class ClimberWinch extends Command {
 
   public ClimberWinch(double percentage) {
     // Use requires() here to declare subsystem dependencies
-    requires(Robot.climber);
+    requires(Robot.climbWinch);
     power = percentage;
   }
 
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
-    Robot.climber.setWinchPower(power);
+    Robot.climbWinch.setWinchPower(power);
   }
 
   // Called repeatedly when this Command is scheduled to run
@@ -40,13 +40,13 @@ public class ClimberWinch extends Command {
   // Called once after isFinished returns true
   @Override
   protected void end() {
-    Robot.climber.setWinchPower(0);
+    Robot.climbWinch.setWinchPower(0);
   }
 
   // Called when another command which requires one or more of the same
   // subsystems is scheduled to run
   @Override
   protected void interrupted() {
-    Robot.climber.setWinchPower(0);
+    Robot.climbWinch.setWinchPower(0);
   }
 }

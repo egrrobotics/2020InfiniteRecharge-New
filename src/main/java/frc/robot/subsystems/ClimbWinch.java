@@ -16,22 +16,12 @@ import frc.robot.RobotMap;
 /**
  * Add your docs here.
  */
-public class Climber extends Subsystem {
+public class ClimbWinch extends Subsystem {
 
-  TalonSRX lift;
   TalonSRX winch;
 
-  public Climber() {
-    lift = new TalonSRX(RobotMap.climberLift);
+  public ClimbWinch() {
     winch = new TalonSRX(RobotMap.climberWinch);
-  }
-
-  public void setLiftPower(double power) {
-    lift.set(ControlMode.PercentOutput, power);
-  }
-
-  public double getLiftPosition() {
-    return lift.getSelectedSensorPosition();
   }
 
   public void setWinchPower(double power) {

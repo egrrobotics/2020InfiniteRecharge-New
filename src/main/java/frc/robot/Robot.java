@@ -21,7 +21,8 @@ import frc.robot.commands.AutoOnTheLine;
 import frc.robot.commands.Enginauto;
 import frc.robot.commands.NopeAuto;
 import frc.robot.commands.TestAuto;
-import frc.robot.subsystems.Climber;
+import frc.robot.subsystems.ClimbLift;
+import frc.robot.subsystems.ClimbWinch;
 import frc.robot.subsystems.DriveTrain;
 import frc.robot.subsystems.ExampleSubsystem;
 import frc.robot.subsystems.IntakeLift;
@@ -55,7 +56,8 @@ public class Robot extends TimedRobot {
   // Other Subsystems
   public static IntakeLift intakeLift = new IntakeLift();
   public static IntakeSpin intakeSpin = new IntakeSpin();
-  public static Climber climber = new Climber();
+  public static ClimbLift climbLift = new ClimbLift();
+  public static ClimbWinch climbWinch = new ClimbWinch();
   public static Wof wof = new Wof();
   public static DriveTrain driveTrain = new DriveTrain();
 
