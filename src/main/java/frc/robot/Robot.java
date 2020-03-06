@@ -19,6 +19,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.util.Color;
 import frc.robot.commands.AutoOnTheLine;
 import frc.robot.commands.Enginauto;
+import frc.robot.commands.NopeAuto;
 import frc.robot.commands.TestAuto;
 import frc.robot.subsystems.Climber;
 import frc.robot.subsystems.DriveTrain;
@@ -71,6 +72,7 @@ public class Robot extends TimedRobot {
     m_chooser.setDefaultOption("On the Line", new AutoOnTheLine());
     m_chooser.addOption("Enginauto", new Enginauto());
     m_chooser.addOption("Test", new TestAuto());
+    m_chooser.addOption("Nope", new NopeAuto());
     SmartDashboard.putData("Auto mode", m_chooser);
 
     // Color Sensor
