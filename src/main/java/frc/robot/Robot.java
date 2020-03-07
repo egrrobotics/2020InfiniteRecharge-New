@@ -19,6 +19,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.util.Color;
 import frc.robot.commands.AutoOnTheLine;
 import frc.robot.commands.Enginauto;
+import frc.robot.commands.MoveItMoveIt;
 import frc.robot.commands.NopeAuto;
 import frc.robot.commands.TestAuto;
 import frc.robot.subsystems.ClimbLift;
@@ -75,6 +76,7 @@ public class Robot extends TimedRobot {
     m_chooser.addOption("Enginauto", new Enginauto());
     m_chooser.addOption("Test", new TestAuto());
     m_chooser.addOption("Nope", new NopeAuto());
+    m_chooser.addOption("Move It Move It!", new MoveItMoveIt());
     SmartDashboard.putData("Auto mode", m_chooser);
 
     // Color Sensor
@@ -95,10 +97,10 @@ public class Robot extends TimedRobot {
   @Override
   public void robotPeriodic() {
 
-    WofMatchResult cColor = wof.getWheelColor();
+    // WofMatchResult cColor = wof.getWheelColor();
 
-    SmartDashboard.putString("Color", cColor.getColor());
-    SmartDashboard.putNumber("Confidence", cColor.getConfidence() * 100);
+    // SmartDashboard.putString("Color", cColor.getColor());
+    // SmartDashboard.putNumber("Confidence", cColor.getConfidence() * 100);
 
   }
 

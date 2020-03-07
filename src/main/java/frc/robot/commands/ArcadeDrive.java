@@ -36,19 +36,9 @@ public class ArcadeDrive extends Command {
   
   
   public double clip(double x){
-    if (!Robot.m_oi.driverButtonLeftBumper.get()) {
-      if (x>.825) return .825;
-      if (x<-.825) return -.825;
-    }
+    if (x>.825) return .825;
+    if (x<-.825) return -.825;
     return x;
-  }
-
-  public double mult(double x) {
-    if (Robot.m_oi.driverButtonRightBumper.get()) {
-      return 0.25 * x;
-    } else {
-      return x;
-    }
   }
 
   // Called repeatedly when this Command is scheduled to run
@@ -56,8 +46,8 @@ public class ArcadeDrive extends Command {
   protected void execute() {
     throttle = deadBand(-Robot.m_oi.driver.getRawAxis(1));
     wheel = deadBand(0.875 * Robot.m_oi.driver.getRawAxis(4));
-    leftPower = deadBand(mult(clip(throttle + wheel)));
-    rightPower = deadBand(mult(clip(throttle - wheel)));
+    leftPower = deadBand(clip(throttle + wheel));
+    rightPower = deadBand(clip(throttle - wheel));
     Robot.driveTrain.setPower(leftPower, rightPower);
   }
 
