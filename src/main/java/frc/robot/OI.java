@@ -59,7 +59,7 @@ public class OI {
 
     // Climber hook lift up/down.
     operatorButtonRightBumper.whileHeld(new ClimberLift(0.325));
-    operatorButtonLeftBumper.whileHeld(new ClimberLift(-0.2));
+    operatorButtonLeftBumper.whileHeld(new ClimberLift(-0.15));
 
     // Climber winch (only goes in!)
     operatorButtonBack.whileHeld(new ClimberWinch(0.5));
