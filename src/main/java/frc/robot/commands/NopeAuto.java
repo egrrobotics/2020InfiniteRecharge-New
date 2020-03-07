@@ -9,6 +9,8 @@ package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
+import frc.robot.commands.DelayTimed;
+
 public class NopeAuto extends CommandGroup {
   /**
    * Add your docs here.
@@ -16,6 +18,7 @@ public class NopeAuto extends CommandGroup {
   public NopeAuto() {
 
     /* LMAO I DO NOTHING */
+    addSequential(new DelayTimed(5));
     
   }
 }

@@ -12,6 +12,7 @@ import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 import com.revrobotics.ColorMatchResult;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.Robot;
 import frc.robot.RobotMap;
 import frc.robot.commands.WofDrive;
@@ -32,10 +33,12 @@ public class Wof extends Subsystem {
 
   public void setLiftPower(double power) {
     lift.set(ControlMode.PercentOutput, power);
+    SmartDashboard.putNumber("WOF Lift", power);
   }
 
   public void setSpinnerPower(double power) {
     spinner.set(ControlMode.PercentOutput, power);
+    SmartDashboard.putNumber("WOF Spinner", power);
   }
 
   public double getLiftPosition() {

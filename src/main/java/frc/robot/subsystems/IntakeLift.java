@@ -11,6 +11,7 @@ import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.RobotMap;
 
 /**
@@ -26,6 +27,7 @@ public class IntakeLift extends Subsystem {
 
   public void setLiftPower(double power) {
     lift.set(ControlMode.PercentOutput, power);
+    SmartDashboard.putNumber("Intake Lift", power);
   }
 
   @Override

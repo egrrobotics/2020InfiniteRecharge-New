@@ -8,6 +8,7 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.command.TimedCommand;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  * Add your docs here.
@@ -20,6 +21,7 @@ public class DelayTimed extends TimedCommand {
     super(timeout);
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
+    SmartDashboard.putString("Auto Command", "Delay");
   }
 
   // Called just before this Command runs the first time

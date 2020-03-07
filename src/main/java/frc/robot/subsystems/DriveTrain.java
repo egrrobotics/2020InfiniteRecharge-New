@@ -11,6 +11,7 @@ import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.RobotMap;
 import frc.robot.commands.ArcadeDrive;
 
@@ -45,12 +46,14 @@ public class DriveTrain extends Subsystem {
     leftPower = deadBand(leftPower);
     leftA.set(ControlMode.PercentOutput, leftPower);
     leftB.set(ControlMode.PercentOutput, leftPower);
+    SmartDashboard.putNumber("Left Drive", leftPower);
   }
 
   private void setRightPower(double rightPower) {
     rightPower = deadBand(rightPower);
     rightA.set(ControlMode.PercentOutput, rightPower);
     rightB.set(ControlMode.PercentOutput, rightPower);
+    SmartDashboard.putNumber("Right Drive", rightPower);
   }
 
   public void setPower(double power) {

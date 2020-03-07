@@ -11,6 +11,7 @@ import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.RobotMap;
 
 /**
@@ -26,6 +27,7 @@ public class ClimbWinch extends Subsystem {
 
   public void setWinchPower(double power) {
     winch.set(ControlMode.PercentOutput, power);
+    SmartDashboard.putNumber("Climb Winch", power);
   }
 
   @Override

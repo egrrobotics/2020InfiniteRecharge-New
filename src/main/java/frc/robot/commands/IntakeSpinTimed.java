@@ -8,6 +8,7 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.command.TimedCommand;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.Robot;
 
 /**
@@ -24,6 +25,8 @@ public class IntakeSpinTimed extends TimedCommand {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
     requires(Robot.intakeSpin);
+
+    SmartDashboard.putString("Auto Command", "Intake Spin");
 
     this.spinPower = power;
   }
