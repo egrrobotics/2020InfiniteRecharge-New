@@ -16,7 +16,6 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.Robot;
 import frc.robot.RobotMap;
 import frc.robot.commands.WofDrive;
-import frc.robot.util.WofMatchResult;
 
 /**
  * Add your docs here.
@@ -49,7 +48,7 @@ public class Wof extends Subsystem {
     return spinner.getSelectedSensorPosition();
   }
 
-  public WofMatchResult getWheelColor() {
+  public String getWheelColor() {
 
     ColorMatchResult match = Robot.m_colorMatcher.matchClosestColor(Robot.m_colorSensor.getColor());
 
@@ -60,9 +59,7 @@ public class Wof extends Subsystem {
     else if (match.color == Robot.kYellowTarget) { colorString = "Yellow"; }
     else { colorString = "Unknown"; }
 
-    double colorConfidence = match.confidence;
-
-    return new WofMatchResult(colorString, colorConfidence);
+    return colorString;
 
   }
 
