@@ -36,10 +36,10 @@ public class Enginauto extends CommandGroup {
     // a CommandGroup containing them would require both the chassis and the
     // arm.
 
-    addSequential(new DelayTimed(6));
+    addSequential(new DelayTimed(5));
     addSequential(new IntakeSpinTimed(1.5, 1));
     addSequential(new IntakeLiftTimed(0.125, -0.4));
     addSequential(new IntakeSpinTimed(0.875, 1));
-    addSequential(new DriveTimed(2.25, -0.2, -0.7));
+    addSequential(new DriveTimed(1.5, -0.2, -0.7));
   }
 }
