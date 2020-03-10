@@ -41,10 +41,18 @@ public class ArcadeDrive extends Command {
     return x;
   }
 
+  public double slowMode(double x) {
+    if (Robot.m_oi.driverButtonRightBumper.get()) {
+      return 0.5 * x;
+    } else {
+      return x;
+    }
+  }
+
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    throttle = deadBand(-Robot.m_oi.driver.getRawAxis(1));
+    throttle = deadBand(-slowMode(Robot.m_oi.driver.getRawAxis(1)));
     wheel = deadBand(0.875 * Robot.m_oi.driver.getRawAxis(4));
     leftPower = deadBand(clip(throttle + wheel));
     rightPower = deadBand(clip(throttle - wheel));
