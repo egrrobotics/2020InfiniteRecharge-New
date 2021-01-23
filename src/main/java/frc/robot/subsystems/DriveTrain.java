@@ -66,18 +66,6 @@ public class DriveTrain extends Subsystem {
     setRightPower(rightPower);
   }
 
-  public int getLeftEncoder() {
-    return leftA.getSelectedSensorPosition();
-  }
-
-  public int getRightEncoder() {
-    return rightA.getSelectedSensorPosition();
-  }
-
-  public int getAverageEncoder() {
-    return (leftA.getSelectedSensorPosition() + rightA.getSelectedSensorPosition()) / 2;
-  }
-
   @Override
   public void initDefaultCommand() {
     // Set the default command for a subsystem here.
