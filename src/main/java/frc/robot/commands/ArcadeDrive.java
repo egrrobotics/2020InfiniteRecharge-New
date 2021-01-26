@@ -53,7 +53,7 @@ public class ArcadeDrive extends Command {
   @Override
   protected void execute() {
     throttle = deadBand(-slowMode(Robot.m_oi.driver.getRawAxis(1)));
-    wheel = deadBand(0.875 * Robot.m_oi.driver.getRawAxis(4));
+    wheel = deadBand(0.875 * slowMode(Robot.m_oi.driver.getRawAxis(4)));
     leftPower = deadBand(clip(throttle + wheel));
     rightPower = deadBand(clip(throttle - wheel));
     Robot.driveTrain.setPower(leftPower, rightPower);
