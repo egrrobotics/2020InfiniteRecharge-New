@@ -7,7 +7,9 @@
 
 package frc.robot.commands;
 
+import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.LinearFilter;
+import edu.wpi.first.wpilibj.RobotController;
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 
@@ -40,11 +42,27 @@ public class ArcadeDrive extends Command {
   
   
   public double clip(double x){
-    if (!Robot.m_oi.driverButtonLeftBumper.get()) {
-      if (x>.825) return .825;
-      if (x<-.825) return -.825;
+
+    if (Robot.m_oi.driverButtonLeftBumper.get()) {
+
+      if (RobotController.getBatteryVoltage() > 10.5) {
+        return x;
+      }
+
+    } else {
+
+      if (RobotController.getBatteryVoltage() > 10.5) {
+        if (x>.825) return .825;
+        if (x<-.825) return -.825;
+      } else {
+        if (x>.75) return .75;
+        if (x<-.75) return -.75;
+      }
+
     }
+
     return x;
+    
   }
 
   public double slowMode(double x) {
