@@ -7,7 +7,6 @@
 
 package frc.robot.commands;
 
-import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.LinearFilter;
 import edu.wpi.first.wpilibj.RobotController;
 import edu.wpi.first.wpilibj.command.Command;
@@ -62,7 +61,7 @@ public class ArcadeDrive extends Command {
     }
 
     return x;
-    
+
   }
 
   public double slowMode(double x) {
