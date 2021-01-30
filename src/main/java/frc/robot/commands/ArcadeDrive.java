@@ -72,15 +72,11 @@ public class ArcadeDrive extends Command {
     }
   }
 
-  public double intelligentWheelMultiplier(double throttle) {
-    return 0.875 * ( throttle/2 ) + 0.5;
-  }
-
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
     throttle = filterThrottle.calculate(deadBand(-slowMode(Robot.m_oi.driver.getRawAxis(1))));
-    wheel = filterWheel.calculate(deadBand(intelligentWheelMultiplier(throttle) * slowMode(Robot.m_oi.driver.getRawAxis(4))));
+    wheel = filterWheel.calculate(deadBand(slowMode(Robot.m_oi.driver.getRawAxis(4))));
     leftPower = deadBand(clip(throttle + wheel));
     rightPower = deadBand(clip(throttle - wheel));
     Robot.driveTrain.setPower(leftPower, rightPower);

@@ -10,10 +10,6 @@ package frc.robot;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
-import frc.robot.commands.ClimberLift;
-import frc.robot.commands.ClimberWinch;
-import frc.robot.commands.IntakeLift;
-import frc.robot.commands.IntakeSpinner;
 
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -48,22 +44,6 @@ public class OI {
   public Button operatorButtonRightAxisPress = new JoystickButton(operator, 10);
 
   public OI() {
-
-    // Intake spinner in/out.
-    operatorButtonA.whileHeld(new IntakeSpinner(-1));
-    operatorButtonB.whileHeld(new IntakeSpinner(1));
-
-    // Intake spinner up/down.
-    operatorButtonY.whileHeld(new IntakeLift(0.5));
-    operatorButtonX.whileHeld(new IntakeLift(-0.4));
-
-    // Climber hook lift up/down.
-    operatorButtonRightBumper.whileHeld(new ClimberLift(0.325));
-    operatorButtonLeftBumper.whileHeld(new ClimberLift(-0.15));
-
-    // Climber winch (only goes in!)
-    operatorButtonBack.whileHeld(new ClimberWinch(0.5));
-    operatorButtonStart.whileHeld(new ClimberWinch(1));
 
   }
   

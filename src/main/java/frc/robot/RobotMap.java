@@ -24,20 +24,9 @@ public class RobotMap {
   // public static int rangefinderPort = 1;
   // public static int rangefinderModule = 1;
 
-  public static int driveLeftA = 1;
-  public static int driveLeftB = 2;
-  public static int driveRightA = 3;
-  public static int driveRightB = 4;
-
-  public static int intakeLift = 5;
-  public static int intakeSpinner = 6;
-
-  public static int wofLift = 7;
-  public static double wofLiftLimit = 1390000;
-  public static int wofSpinner = 8;
-
-  public static int climberWinch = 9;
-  public static int climberLift = 10;
-  public static int climberLiftLimit = 0;
+  public static int driveLeftA = 0;
+  public static int driveLeftB = 1;
+  public static int driveRightA = 2;
+  public static int driveRightB = 3;
 
 }

@@ -8,7 +8,7 @@
 package frc.robot.subsystems;
 
 import com.ctre.phoenix.motorcontrol.ControlMode;
-import com.ctre.phoenix.motorcontrol.can.TalonSRX;
+import com.ctre.phoenix.motorcontrol.can.VictorSPX;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
@@ -21,16 +21,17 @@ import frc.robot.commands.ArcadeDrive;
 public class DriveTrain extends Subsystem {
   // Put methods for controlling this subsystem
   // here. Call these from Commands.
-  TalonSRX leftA;
-  TalonSRX leftB;
-  TalonSRX rightA;
-  TalonSRX rightB;
+  VictorSPX leftA;
+  VictorSPX leftB;
+  VictorSPX rightA;
+  VictorSPX rightB;
+
  
   public DriveTrain() {
-    leftA = new TalonSRX(RobotMap.driveLeftA);
-    leftB = new TalonSRX(RobotMap.driveLeftB);
-    rightA = new TalonSRX(RobotMap.driveRightA);
-    rightB = new TalonSRX(RobotMap.driveRightB); 
+    leftA = new VictorSPX(RobotMap.driveLeftA);
+    leftB = new VictorSPX(RobotMap.driveLeftB);
+    rightA = new VictorSPX(RobotMap.driveRightA);
+    rightB = new VictorSPX(RobotMap.driveRightB); 
     rightA.setInverted(true);
     rightB.setInverted(true);
   }
