@@ -31,7 +31,16 @@ public class ArcadeDrive extends Command {
     filterWheel = LinearFilter.singlePoleIIR(0.05, 0.02);
   }
 
-  public double deadBand(double x){
+  private double deadBand(LinearFilter filter, double x){
+    if (Math.abs(x)<.2){
+      filter.reset();
+      return 0;
+    }else{
+      return x;
+    }
+  }
+
+  private double deadBand(double x){
     if (Math.abs(x)<.2){
       return 0;
     }else{
@@ -39,8 +48,7 @@ public class ArcadeDrive extends Command {
     }
   }
   
-  
-  public double clip(double x){
+  private double clip(double x){
 
     if (Robot.m_oi.driverButtonLeftBumper.get()) {
 
@@ -75,8 +83,8 @@ public class ArcadeDrive extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    throttle = filterThrottle.calculate(deadBand(-slowMode(Robot.m_oi.driver.getRawAxis(1))));
-    wheel = 0.875 * filterWheel.calculate(deadBand(slowMode(Robot.m_oi.driver.getRawAxis(4))));
+    throttle = deadBand(filterThrottle,filterThrottle.calculate(-slowMode(Robot.m_oi.driver.getRawAxis(1))));
+    wheel = deadBand(filterWheel, 0.875 * filterWheel.calculate(slowMode(Robot.m_oi.driver.getRawAxis(4))));
     leftPower = deadBand(clip(throttle + wheel));
     rightPower = deadBand(clip(throttle - wheel));
     Robot.driveTrain.setPower(leftPower, rightPower);

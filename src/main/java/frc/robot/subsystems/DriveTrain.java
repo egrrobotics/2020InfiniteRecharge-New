@@ -8,6 +8,7 @@
 package frc.robot.subsystems;
 
 import com.ctre.phoenix.motorcontrol.ControlMode;
+import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 import com.ctre.phoenix.motorcontrol.can.VictorSPX;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
@@ -23,14 +24,14 @@ public class DriveTrain extends Subsystem {
   // here. Call these from Commands.
   VictorSPX leftA;
   VictorSPX leftB;
-  VictorSPX rightA;
+  TalonSRX rightA;
   VictorSPX rightB;
 
  
   public DriveTrain() {
     leftA = new VictorSPX(RobotMap.driveLeftA);
     leftB = new VictorSPX(RobotMap.driveLeftB);
-    rightA = new VictorSPX(RobotMap.driveRightA);
+    rightA = new TalonSRX(RobotMap.driveRightA);
     rightB = new VictorSPX(RobotMap.driveRightB); 
     rightA.setInverted(true);
     rightB.setInverted(true);
