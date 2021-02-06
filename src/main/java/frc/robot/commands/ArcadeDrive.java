@@ -7,7 +7,6 @@
 
 package frc.robot.commands;
 
-import edu.wpi.first.wpilibj.LinearFilter;
 import edu.wpi.first.wpilibj.RobotController;
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
@@ -17,8 +16,6 @@ public class ArcadeDrive extends Command {
   double wheel; 
   double leftPower;
   double rightPower;
-  LinearFilter filterThrottle;
-  LinearFilter filterWheel;
   public ArcadeDrive() {
     // Use requires() here to declare subsystem dependencies
     requires(Robot.driveTrain);
@@ -27,17 +24,6 @@ public class ArcadeDrive extends Command {
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
-    filterThrottle = LinearFilter.singlePoleIIR(0.1, 0.02);
-    filterWheel = LinearFilter.singlePoleIIR(0.05, 0.02);
-  }
-
-  private double deadBand(LinearFilter filter, double x){
-    if (Math.abs(x)<.2){
-      filter.reset();
-      return 0;
-    }else{
-      return x;
-    }
   }
 
   private double deadBand(double x){
@@ -83,8 +69,8 @@ public class ArcadeDrive extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    throttle = deadBand(filterThrottle,filterThrottle.calculate(-slowMode(Robot.m_oi.driver.getRawAxis(1))));
-    wheel = deadBand(filterWheel, 0.875 * filterWheel.calculate(slowMode(Robot.m_oi.driver.getRawAxis(4))));
+    throttle = deadBand(-slowMode(Robot.m_oi.driver.getRawAxis(1)));
+    wheel = deadBand(0.875 * slowMode(Robot.m_oi.driver.getRawAxis(4)));
     leftPower = deadBand(clip(throttle + wheel));
     rightPower = deadBand(clip(throttle - wheel));
     Robot.driveTrain.setPower(leftPower, rightPower);
@@ -106,7 +92,5 @@ public class ArcadeDrive extends Command {
   // subsystems is scheduled to run
   @Override
   protected void interrupted() {
-    filterThrottle.reset();
-    filterWheel.reset();
   }
 }
