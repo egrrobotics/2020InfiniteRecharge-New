@@ -18,7 +18,6 @@ public class ArcadeDrive extends Command {
   double leftPower;
   double rightPower;
   LinearFilter filterThrottle;
-  LinearFilter filterWheel;
   public ArcadeDrive() {
     // Use requires() here to declare subsystem dependencies
     requires(Robot.driveTrain);
@@ -27,8 +26,7 @@ public class ArcadeDrive extends Command {
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
-    filterThrottle = LinearFilter.singlePoleIIR(0.1, 0.02);
-    filterWheel = LinearFilter.singlePoleIIR(0.05, 0.02);
+    filterThrottle = LinearFilter.singlePoleIIR(0.05, 0.02);
   }
 
   public double deadBand(double x){
@@ -38,7 +36,6 @@ public class ArcadeDrive extends Command {
       return x;
     }
   }
-  
   
   public double clip(double x){
 
@@ -72,15 +69,11 @@ public class ArcadeDrive extends Command {
     }
   }
 
-  public double intelligentWheelMultiplier(double throttle) {
-    return 0.875 * ( throttle/2 ) + 0.5;
-  }
-
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
     throttle = filterThrottle.calculate(deadBand(-slowMode(Robot.m_oi.driver.getRawAxis(1))));
-    wheel = filterWheel.calculate(deadBand(intelligentWheelMultiplier(throttle) * slowMode(Robot.m_oi.driver.getRawAxis(4))));
+    wheel = 0.9 * deadBand(slowMode(Robot.m_oi.driver.getRawAxis(4)));
     leftPower = deadBand(clip(throttle + wheel));
     rightPower = deadBand(clip(throttle - wheel));
     Robot.driveTrain.setPower(leftPower, rightPower);
@@ -103,6 +96,5 @@ public class ArcadeDrive extends Command {
   @Override
   protected void interrupted() {
     filterThrottle.reset();
-    filterWheel.reset();
   }
 }

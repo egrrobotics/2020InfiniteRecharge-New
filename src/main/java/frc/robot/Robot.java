@@ -7,16 +7,11 @@
 
 package frc.robot;
 
-import com.revrobotics.ColorMatch;
-import com.revrobotics.ColorSensorV3;
-
-import edu.wpi.first.wpilibj.I2C;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import edu.wpi.first.wpilibj.util.Color;
 import frc.robot.commands.AutoOnTheLine;
 import frc.robot.commands.Enginauto;
 import frc.robot.commands.MoveItMoveIt;
@@ -30,8 +25,6 @@ import frc.robot.subsystems.IntakeLift;
 import frc.robot.subsystems.IntakeSpin;
 import frc.robot.subsystems.Wof;
 
-// import frc.robot.util.WofMatchResult;
-
 /**
  * The VM is configured to automatically run this class, and to call the
  * functions corresponding to each mode, as described in the TimedRobot
@@ -40,17 +33,6 @@ import frc.robot.subsystems.Wof;
  * project.
  */
 public class Robot extends TimedRobot {
-
-  // Color Sensor
-  public static I2C.Port i2cPort = I2C.Port.kOnboard;
-  public static ColorSensorV3 m_colorSensor = new ColorSensorV3(i2cPort);
-  public static ColorMatch m_colorMatcher = new ColorMatch();
-  public static Color kBlueTarget = ColorMatch.makeColor(0.143, 0.427, 0.429);
-  public static Color kGreenTarget = ColorMatch.makeColor(0.197, 0.561, 0.240);
-  public static Color kRedTarget = ColorMatch.makeColor(0.561, 0.232, 0.114);
-  public static Color kYellowTarget = ColorMatch.makeColor(0.361, 0.524, 0.113);
-  private String cColor;
-  private Boolean isBlue, isRed, isGreen, isYellow;
 
   // Defaults
   public static ExampleSubsystem m_subsystem = new ExampleSubsystem();
@@ -80,12 +62,6 @@ public class Robot extends TimedRobot {
     m_chooser.addOption("Nope", new NopeAuto());
     m_chooser.addOption("Move It Move It!", new MoveItMoveIt());
     SmartDashboard.putData("Auto mode", m_chooser);
-
-    // Color Sensor
-    m_colorMatcher.addColorMatch(kBlueTarget);
-    m_colorMatcher.addColorMatch(kGreenTarget);
-    m_colorMatcher.addColorMatch(kRedTarget);
-    m_colorMatcher.addColorMatch(kYellowTarget); 
   }
 
   /**
@@ -99,22 +75,7 @@ public class Robot extends TimedRobot {
   @Override
   public void robotPeriodic() {
 
-    // Get color value.
-    cColor = wof.getWheelColor();
-    SmartDashboard.putString("Color", cColor);
-
-    // Set bools.
-    if (cColor == "Blue") { isBlue = true; isYellow = false; isRed = false; isGreen = false; }
-    else if (cColor == "Yellow") { isBlue = false; isYellow = true; isRed = false; isGreen = false; }
-    else if (cColor == "Red") { isBlue = false; isYellow = false; isRed = true; isGreen = false; }
-    else if (cColor == "Green") { isBlue = false; isYellow = false; isRed = false; isGreen = true; }
-    else { isBlue = false; isYellow = false; isRed = false; isGreen = false; }
-    
-    // Update dash.
-    SmartDashboard.putBoolean("Blue", isBlue);
-    SmartDashboard.putBoolean("Yellow", isYellow);
-    SmartDashboard.putBoolean("Red", isRed);
-    SmartDashboard.putBoolean("Green", isGreen);
+    // Does nothing.
 
   }
 

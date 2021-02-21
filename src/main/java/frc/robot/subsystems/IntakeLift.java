@@ -13,6 +13,7 @@ import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.RobotMap;
+import frc.robot.commands.IntakeLiftDrive;
 
 /**
  * Add your docs here.
@@ -25,7 +26,16 @@ public class IntakeLift extends Subsystem {
     lift = new TalonSRX(RobotMap.intakeLift);
   }
 
+  public double deadBand(double x){
+    if (Math.abs(x)<.1){
+      return 0;
+    }else{
+      return x;
+    }
+  }
+
   public void setLiftPower(double power) {
+    power = deadBand(power);
     lift.set(ControlMode.PercentOutput, power);
     SmartDashboard.putNumber("Intake Lift", power);
   }
@@ -33,6 +43,6 @@ public class IntakeLift extends Subsystem {
   @Override
   public void initDefaultCommand() {
     // Set the default command for a subsystem here.
-    // setDefaultCommand(new MySpecialCommand());
+    setDefaultCommand(new IntakeLiftDrive());
   }
 }

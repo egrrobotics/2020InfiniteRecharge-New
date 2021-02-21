@@ -12,7 +12,6 @@ import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import frc.robot.commands.ClimberLift;
 import frc.robot.commands.ClimberWinch;
-import frc.robot.commands.IntakeLift;
 import frc.robot.commands.IntakeSpinner;
 
 /**
@@ -49,13 +48,11 @@ public class OI {
 
   public OI() {
 
-    // Intake spinner in/out.
-    operatorButtonA.whileHeld(new IntakeSpinner(-1));
+    // Intake spinner.
+    operatorButtonY.whileHeld(new IntakeSpinner(0.25));
+    operatorButtonX.whileHeld(new IntakeSpinner(0.5));
+    operatorButtonA.whileHeld(new IntakeSpinner(0.75));
     operatorButtonB.whileHeld(new IntakeSpinner(1));
-
-    // Intake spinner up/down.
-    operatorButtonY.whileHeld(new IntakeLift(0.5));
-    operatorButtonX.whileHeld(new IntakeLift(-0.4));
 
     // Climber hook lift up/down.
     operatorButtonRightBumper.whileHeld(new ClimberLift(0.325));
